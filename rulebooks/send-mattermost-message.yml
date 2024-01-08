@@ -24,8 +24,8 @@
         - run_job_template:
             name: Sync prod hosts files
             organization: Home Lab
-#        run_module:
-#          name: ansible.builtin.uri
-#          module_args: >
-#            url=http://192.168.7.214:8065/hooks/1ntqr4h4h3ns381yubpgufgapc
-#            method=POST HEADER_Content-Type="application/json" body='"text": "Hello, this is some text\nThis is more text.'
+        - run_module:
+            name: ansible.builtin.uri
+            module_args: >
+              url=http://192.168.7.214:8065/hooks/1ntqr4h4h3ns381yubpgufgapc
+              method=POST HEADER_Content-Type="application/json" body='"text": "Hello, this is some text\nThis is more text.'
