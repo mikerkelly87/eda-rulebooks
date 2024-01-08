@@ -17,7 +17,7 @@
 
   ## Define the action we should take should the condition be met
 
-      action:
+      actions:
         debug:
           msg: "Send a message to Mattermost"
         # Just picking a random job template in my controller
