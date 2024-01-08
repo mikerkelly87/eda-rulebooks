@@ -1,0 +1,31 @@
+---
+- name: Listen for events on a webhook
+  hosts: localhost
+
+  ## Define our source for events
+
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 7000
+
+  ## Define the conditions we are looking for
+
+  rules:
+    - name: Update prod servers
+      condition: event.payload.message == "send-message"
+
+  ## Define the action we should take should the condition be met
+
+      action:
+        debug:
+          msg: "Send a message to Mattermost"
+        # Just picking a random job template in my controller
+        run_job_template:
+          name: Sync prod hosts files
+          organization: Home Lab
+        run_module:
+          name: ansible.builtin.uri
+          module_args: >
+            url=http://192.168.7.214:8065/hooks/1ntqr4h4h3ns381yubpgufgapc
+            method=POST HEADER_Content-Type="application/json" body='"text": "Hello, this is some text\nThis is more text.'
