@@ -1,0 +1,14 @@
+---
+- name: Send a message to Mattermost
+  hosts: localhost
+  tasks:
+    - name: Send the message
+      ansible.builtin.uri:
+        url: http://192.168.7.214:8065/hooks/1ntqr4h4h3ns381yubpgufgapc
+        method: POST
+        headers:
+          Content-Type: application/json
+        body_format: json
+        body:
+          text: "Hello, this is some text sent from an Ansible playbook\nThis is more text."
+
