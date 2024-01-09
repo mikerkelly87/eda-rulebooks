@@ -17,10 +17,10 @@
 
   ## Define the action we should take should the condition be met
 
-      action:
-        debug:
-          msg: "Got the server update hook!"
-        run_job_template:
-          name: Update packages on prod servers
-          organization: Home Lab
+      actions:
+        - debug:
+            msg: "Got the server update hook!"
+        - run_job_template:
+            name: Update packages on prod servers
+            organization: Home Lab
 
